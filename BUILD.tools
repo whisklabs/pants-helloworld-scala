@@ -1,0 +1,28 @@
+SCALA_REV = '2.12.10'
+
+jar_library(name='scala-library',
+            jars=[
+                jar(org='org.scala-lang', name='scala-library', rev=SCALA_REV),
+            ])
+
+jar_library(name='scalac_2_12',
+            jars=[
+                jar(org='org.scala-lang', name='scala-compiler', rev=SCALA_REV),
+            ])
+
+target(name='scala-repl_2_12',
+       dependencies=[
+           ':ammonite'
+       ])
+
+jar_library(name='scalafmt',
+            jars=[
+                scala_jar(org='org.scalameta', name='scalafmt-cli', rev='2.3.2')
+            ])
+
+jar_library(
+    name = 'ammonite',
+    jars = [
+        jar(org='com.lihaoyi', name = 'ammonite_2.12.8', rev='1.6.7')
+    ]
+)
